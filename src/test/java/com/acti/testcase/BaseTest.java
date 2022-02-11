@@ -9,6 +9,13 @@ import com.acti.pages.EnterTimePage;
 import com.acti.pages.LoginPage;
 import com.acti.utils.ExcelLib;
 
+/*
+ * Name: BaseTest
+ * Description: This script is a parent script which has the set of pre-requisites steps before executing actual test case
+ * Author: Usha
+ * Date Modified: 2/11/2022
+ */
+
 public class BaseTest extends DriverScript {
 	
 	LoginPage lp;
