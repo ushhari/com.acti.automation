@@ -3,11 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.acti.testcase.LoginPageTests">
+      <class name="com.acti.testcase.DeleteCustomer">
         <methods>
-          <include name="testTaskMenuPage"/>
+          <include name="TestDeleteCustomer"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="setReport"/>
         </methods>
-      </class> <!-- com.acti.testcase.LoginPageTests -->
+      </class> <!-- com.acti.testcase.DeleteCustomer -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
