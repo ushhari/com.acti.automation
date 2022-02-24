@@ -26,4 +26,15 @@ public class Utils {
 		return screenpath;
 	}
 	
+	public static void fnSleep()
+	{
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+		
 }

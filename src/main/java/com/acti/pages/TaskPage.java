@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.acti.base.DriverScript;
+import com.acti.utils.Utils;
 
 /*
 * Name: TaskMenuPage Script
@@ -22,12 +23,20 @@ public class TaskPage extends DriverScript {
 	@FindBy(xpath = "//textarea[@placeholder='Enter Customer Description'] ")WebElement textboxDescription;
 	@FindBy(xpath = "//div[text()='Create Customer'] ")	WebElement btnCreateCustomer;
 	@FindBy(xpath = "//span[@class='innerHtml']")WebElement textSuccessMessage;
-	@FindBy(xpath = "//input[@placeholder='Start typing name ...'][1]")	WebElement textboxExistingCustomerName;
-	@FindBy(xpath = "//div[@class='title'][contains(.,'Test 1    (archived)')]") WebElement selectCustomer;
-	@FindBy(xpath = "(//div[@class='editButton'])[16]")WebElement buttonSettings;
-	@FindBy(xpath = "//div[@class='editCustomerPanelHeader']//div[@class='action'][normalize-space()='ACTIONS']") WebElement dropdownActions;
-	@FindBy(xpath = "(//div[@class='title'][contains(.,'Delete')])[1]") WebElement buttonDelete;
-	@FindBy(xpath = "//span[contains(.,'Delete permanently')]") WebElement confirmationbuttonDelete;
+	
+	@FindBy(xpath="(//input[@placeholder='Start typing name ...'])[1]") WebElement searchBox;
+	@FindBy(xpath="//div[@class='filteredContainer']//div[@class='title']") WebElement searchedItem;
+	@FindBy(xpath="//div[@class='titleEditButtonContainer']//div[@class='editButton']") WebElement editButton;
+	@FindBy(xpath="//div[@class='editCustomerPanelHeader']//div[@class='action'][normalize-space()='ACTIONS']") WebElement actionsButton;
+	@FindBy(xpath="//div[@class='taskManagement_customerPanel']//div[@class='title'][normalize-space()='Delete']") WebElement deleteButton;
+	@FindBy(xpath="//span[normalize-space()='Delete permanently']") WebElement deletePermanentlyButton;
+	
+//	@FindBy(xpath = "//input[@placeholder='Start typing name ...'][1]")	WebElement textboxExistingCustomerName;
+//	@FindBy(xpath = "(//div[contains(@class,'title')])[50]") WebElement selectCustomer;
+//	@FindBy(xpath = "(//div[@class='editButton'])[16]")WebElement buttonSettings;
+//	@FindBy(xpath = "//div[@class='editCustomerPanelHeader']//div[@class='action'][normalize-space()='ACTIONS']") WebElement dropdownActions;
+//	@FindBy(xpath = "(//div[@class='title'][contains(.,'Delete')])[1]") WebElement buttonDelete;
+//	@FindBy(xpath = "//span[contains(.,'Delete permanently')]") WebElement confirmationbuttonDelete;
 	@FindBy(xpath = "//span[@class='innerHtml']")WebElement textSuccessMessageDelete;
 
 	// *************************************Page Initialization*****************//
@@ -39,6 +48,41 @@ public class TaskPage extends DriverScript {
 	// *************************************Page Actions or Methods
 	// **********************//
 
+
+	public void enterSearchText(String searchText)
+	{
+		searchBox.sendKeys(searchText);
+		Utils.fnSleep();
+	}
+	
+	public void clickSearchedResult()
+	{
+		searchedItem.click();
+	}
+	
+	public void clickEditButton()
+	{
+		editButton.click();
+		Utils.fnSleep();
+	}
+	
+	public void clickDeleteButton()
+	{
+		deleteButton.click();
+		Utils.fnSleep();
+	}
+	
+	public void clickDeletePermanentlyButton()
+	{
+		deletePermanentlyButton.click();
+		Utils.fnSleep();
+	}
+	
+	public void clickActionsButton()
+	{
+		actionsButton.click();
+	}
+	
 	public void ClickAddNewButton() {
 		btnAddNew.click();
 	}
@@ -63,29 +107,32 @@ public class TaskPage extends DriverScript {
 		return textSuccessMessage.getText();
 	}
 
-	public void EnterExistingCustomer() {
-		textboxExistingCustomerName.sendKeys("Test 1");
-	}
-
-	public void SelectCustomerName() {
-		selectCustomer.click();
-	}
-
-	public void ClickSettings() {
-		buttonSettings.click();
-	}
-
-	public void dropdownActions() {
-		dropdownActions.isSelected();
-	}
-	public void buttonDelete()
-	{
-		buttonDelete.click();
-	}
-	public void confirmationbuttonDelet()
-	{
-		confirmationbuttonDelete.click();
-	}
+//	public void EnterExistingCustomer(String searchText) {
+//		textboxExistingCustomerName.sendKeys(searchText);
+//		Utils.fnSleep();
+//	}
+//
+//	public void SelectCustomerName() {
+//		selectCustomer.click();
+//	}
+//
+//	public void ClickSettings() {
+//		buttonSettings.click();
+//		Utils.fnSleep();
+//		
+//	}
+//
+//	public void dropdownActions() {
+//		dropdownActions.click();
+//	}
+//	public void buttonDelete()
+//	{
+//		buttonDelete.click();
+//	}
+//	public void confirmationbuttonDelet()
+//	{
+//		confirmationbuttonDelete.click();
+//	}
 	public String VerifyDeleteMessage()
 	{
 		return textSuccessMessageDelete.getText();
